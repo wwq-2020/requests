@@ -73,6 +73,7 @@ func (r *requests) do(ctx context.Context, method, url string, req interface{}) 
 		}
 		httpRequest.Body = ioutil.NopCloser(buf)
 	}
+	httpRequest = httpRequest.WithContext(ctx)
 
 	resp, err := r.options.httpClient.Do(httpRequest)
 	if err != nil {
